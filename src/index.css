@@ -1,111 +1,72 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@import "tailwindcss";
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+@theme {
+  --color-white: #fff;
+  --color-black: #000;
+  --color-grey-950: #1d2026;
+  --color-grey-500: #69707d;
+  --color-grey-300: #c3cad9;
+  --color-grey-100: #e4e9f2;
+  --color-grey-50: #f6f8fd;
+  --color-orange-500: #ff7e1b;
+  --color-orange-300: #ffab6a;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --font-sans: "Kumbh Sans", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+@utility preset-1 {
+  @apply font-bold text-[2.75rem] leading-12 tracking-normal;
 }
 
-body {
-  margin: 0;
+@utility preset-2 {
+  @apply font-bold text-[1.75rem] leading-8 tracking-normal;
 }
 
+@utility preset-3-b {
+  @apply font-bold text-base leading-6.5 tracking-normal;
+}
+
+@utility preset-3-r {
+  @apply font-normal text-base leading-6.5 tracking-normal;
+}
+
+@utility preset-4 {
+  @apply font-normal text-[0.9375rem] leading-6.5 tracking-normal;
+}
+
+@utility preset-5 {
+  @apply font-bold text-[0.8125rem] leading-4 tracking-[2px];
+}
+
+@utility preset-6 {
+  @apply font-bold text-xs leading-3.75 tracking-[1.85px];
+}
+
+@utility desk-nav {
+  @apply content-[''] absolute -bottom-11 left-0 w-full h-1 bg-orange-500;
+}
+
+/* General style */
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  @apply mx-auto mt-5 md:mt-7 md:w-[79.16%] max-w-277.5;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+button {
+  @apply cursor-pointer;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+li {
+  @apply font-sans font-bold text-grey-950 text-lg leading-6.5 tracking-normal;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.desktop {
+  @apply hidden xl:flex;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.desktop li {
+  @apply preset-4 text-grey-500 relative h-full;
+}
+
+.desktop li:active {
+  @apply text-grey-950 after:desk-nav;
 }
