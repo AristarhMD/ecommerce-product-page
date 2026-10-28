@@ -26,6 +26,7 @@ const products = [
     header: "Fall Limited Edition Sneakers",
     productDescription:
       "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
+    orderQty: 0,
     images: [
       { src: product1, alt: "Sneaker front view" },
       { src: product2, alt: "Sneaker back view" },

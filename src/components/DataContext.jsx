@@ -2,11 +2,13 @@ import { createContext, useState } from "react";
 
 const DataContext = createContext();
 
-export default function DataProivder({ children }) {
-  const [itemQty, setItemQty] = useState(0);
+function DataProivder({ children }) {
+  const [orderedItem, setOrderedItem] = useState([]);
   return (
-    <DataContext.Provider value={{ itemQty, setItemQty }}>
+    <DataContext.Provider value={{ orderedItem, setOrderedItem }}>
       {children}
     </DataContext.Provider>
   );
 }
+
+export { DataProivder, DataContext };

@@ -1,4 +1,4 @@
-import DataProivder from "./DataContext";
+import { DataProivder } from "./DataContext";
 import { Navigation } from "./Navigation";
 import { MainContent } from "./MainContent";
 // import heroImg from "./assets/hero.png";
