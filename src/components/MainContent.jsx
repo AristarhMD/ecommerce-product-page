@@ -1,3 +1,11 @@
+import Slider from "./reusable/Slider";
+
 export function MainContent() {
-  return <main></main>;
+  return (
+    <main>
+      <section>
+        <Slider />
+      </section>
+    </main>
+  );
 }
