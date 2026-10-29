@@ -11,6 +11,7 @@
   --color-orange-500: #ff7e1b;
   --color-orange-300: #ffab6a;
 
+  --shadow-cartModal: 0 20px 50px -20px #1d20261a;
   --shadow-addCart: 0 20px 50px -20px #ff7e1b40;
 
   --font-sans: "Kumbh Sans", sans-serif;

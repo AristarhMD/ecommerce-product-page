@@ -31,7 +31,7 @@ export default function RightSideNav() {
           className="size-6 rounded-full md:size-12.5 object-cover relative -z-1 "
         />
       </button>
-      {isCartOpen && <CartModal />}
+      {isCartOpen && <CartModal isCartOpen={setIsCartOpen} />}
     </div>
   );
 }
