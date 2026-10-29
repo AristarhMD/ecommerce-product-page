@@ -11,6 +11,8 @@
   --color-orange-500: #ff7e1b;
   --color-orange-300: #ffab6a;
 
+  --shadow-addCart: 0 20px 50px -20px #ff7e1b40;
+
   --font-sans: "Kumbh Sans", sans-serif;
 }
 
@@ -86,4 +88,10 @@ li {
 
 .cart-active .cart-tag {
   @apply absolute bottom-full translate-y-1/2 preset-cart text-white bg-orange-500  px-2 rounded-[6.5px];
+}
+
+/* Slider */
+
+.active-thumbnail {
+  @apply inset-ring-2 inset-ring-orange-500;
 }
