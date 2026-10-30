@@ -27,7 +27,7 @@ export default function LigthBoxSlider({
 
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
-      document.addEventListener("click", handleKeyPress);
+      document.removeEventListener("click", handleKeyPress);
 
       document.body.style.overflow = prevOverflow;
     };
@@ -36,13 +36,22 @@ export default function LigthBoxSlider({
   return (
     <div
       className="bg-black/75 fixed z-2 w-screen h-screen inset-0 flex items-center justify-center modal-background"
+      aria-modal="true"
       aria-label="Modal with a clouser look at the item"
       aria-hidden={!isVisible}
+      role="dialog"
     >
       <div>
         <div className="relative w-137.5 h-180.5 flex flex-col overflow-hidden">
-          <button onClick={() => onClose(false)} className="mb-6 self-end">
-            <img src={generalIcons.closeIcon} alt="Close Modal" />
+          <button
+            onClick={() => onClose(false)}
+            className="group mb-6 self-end"
+          >
+            <img
+              src={generalIcons.closeIcon}
+              alt="Close Modal"
+              className="group-hover:filter-[invert(50%)_sepia(87%)_saturate(676%)_hue-rotate(344deg)_brightness(99%)_contrast(105%)]"
+            />
           </button>
 
           <div
@@ -80,16 +89,24 @@ export default function LigthBoxSlider({
         {/* Arrows for navigation */}
         <div className="absolute w-148 left-1/2 top-[44.11%] -translate-1/2 flex justify-between z-2">
           <button
-            className="size-10 flex items-center justify-center bg-white rounded-full"
+            className="group size-10 flex items-center justify-center bg-white rounded-full"
             onClick={onPrev}
           >
-            <img src={generalIcons.previousIcon} alt="Previous slide" />
+            <img
+              src={generalIcons.previousIcon}
+              alt="Previous slide"
+              className="group-hover:filter-[invert(66%)_sepia(62%)_saturate(4388%)_hue-rotate(347deg)_brightness(102%)_contrast(101%)]"
+            />
           </button>
           <button
-            className="size-10 flex items-center justify-center bg-white rounded-full"
+            className="group size-10 flex items-center justify-center bg-white rounded-full"
             onClick={OnNext}
           >
-            <img src={generalIcons.nextIcon} alt="Next slide" />
+            <img
+              src={generalIcons.nextIcon}
+              alt="Next slide"
+              className="group-hover:filter-[invert(66%)_sepia(62%)_saturate(4388%)_hue-rotate(347deg)_brightness(102%)_contrast(101%)]"
+            />
           </button>
         </div>
       </div>

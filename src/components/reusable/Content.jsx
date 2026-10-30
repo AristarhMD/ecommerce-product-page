@@ -22,6 +22,7 @@ export default function Content() {
   const handlePlusQty = () => setSelectedQty((prev) => prev + 1);
 
   const handleToCart = () => {
+    if (selectedQty === 0) return;
     let curretOrder = {
       id: id,
       header: header,
@@ -70,18 +71,27 @@ export default function Content() {
       <div className="flex flex-col md:flex-row gap-4 md:w-full">
         {/* Cart qty increasing */}
         <div className="flex items-center justify-between p-4 bg-grey-50 rounded-[10px] md:w-full xl:basis-1/2">
-          <button onClick={handleMinusQty}>
-            <img src={generalIcons.minusIcon} alt="Decrease order qty" />
+          <button onClick={handleMinusQty} className="group">
+            <img
+              src={generalIcons.minusIcon}
+              alt="Decrease order qty"
+              className="group-hover:opacity-85"
+            />
           </button>
           <p className="preset-3-b text-grey-950">{selectedQty}</p>
-          <button onClick={handlePlusQty}>
-            <img src={generalIcons.plusIcon} alt="Increase order qty" />
+          <button onClick={handlePlusQty} className="group">
+            <img
+              src={generalIcons.plusIcon}
+              alt="Increase order qty"
+              className="group-hover:opacity-85"
+            />
+            {/* filter: invert(86%) sepia(18%) saturate(2252%) hue-rotate(312deg) brightness(104%) contrast(101%); */}
           </button>
         </div>
 
         {/* Cart ordering */}
         <button
-          className="flex items-center justify-center gap-4 py-4 bg-orange-500 rounded-[10px] preset-3-b text-grey-950 shadow-addCart md:w-full"
+          className="flex items-center justify-center gap-4 py-4 bg-orange-500 hover:bg-orange-300 rounded-[10px] preset-3-b text-grey-950 shadow-addCart md:w-full"
           onClick={handleToCart}
         >
           <img

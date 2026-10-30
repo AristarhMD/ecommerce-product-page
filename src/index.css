@@ -79,10 +79,6 @@ li {
   @apply text-grey-950 after:desk-nav;
 }
 
-.cart-interaction {
-  @apply filter-[brightness(0)_invert(0%)_sepia(100%)_saturate(100%)_hue-rotate(355deg)_brightness(87%)_contrast(114%)];
-}
-
 .cart-active img {
   @apply filter-[brightness(0)_invert(0%)_sepia(100%)_saturate(100%)_hue-rotate(355deg)_brightness(87%)_contrast(114%)];
 }

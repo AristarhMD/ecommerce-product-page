@@ -27,8 +27,7 @@ export default function MobNavMenu({ isOpen, handleToggleMenu }) {
       className="fixed inset-0 z-4 w-screen h-full bg-black/75 xl:hidden"
       aria-roledescription="mobile nav"
       aria-label="mobile nav"
-      aria-hidden={!isOpen}
-      aria-live="assertive"
+      aria-live="polite"
     >
       <div
         className="bg-white h-full w-[66.6%] max-w-75 flex flex-col gap-14 px-[6.5%] md:px-[10.5%] py-6  md:py-12 overflow-scroll"

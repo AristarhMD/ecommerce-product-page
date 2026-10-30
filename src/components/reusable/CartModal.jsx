@@ -28,8 +28,7 @@ export default function CartModal({ isCartOpen, setIsCartOpen }) {
       className="absolute z-1 top-19 md:top-23.5 xl:top-16.5 right-2 xl:-right-22 w-90 h-64 py-6 bg-white rounded-[10px] shadow-cartModal"
       ref={cartRef}
       aria-label="Shopping cart"
-      aria-hidden={!isCartOpen}
-      aria-live="assertive"
+      aria-live="polite"
     >
       <p className="preset-3-b text-grey-950 mb-6 px-3">Cart</p>
       <article className="px-6 pt-6 border-t border-grey-100 flex flex-col items-center justify-center gap-6">
@@ -55,11 +54,15 @@ export default function CartModal({ isCartOpen, setIsCartOpen }) {
                   </span>
                 </p>
               </div>
-              <button onClick={handleDeleteCart}>
-                <img src={generalIcons.deleteIcon} alt="Delete icon" />
+              <button onClick={handleDeleteCart} className="group">
+                <img
+                  src={generalIcons.deleteIcon}
+                  alt="Delete icon"
+                  className="group-hover:filter-[invert(74%)_sepia(43%)_saturate(7429%)_hue-rotate(348deg)_brightness(105%)_contrast(101%)]"
+                />
               </button>
             </div>
-            <button className="preset-3-b text-grey-950 bg-orange-500 w-full py-4 rounded-[10px]">
+            <button className="preset-3-b text-grey-950 bg-orange-500 hover:bg-orange-300 w-full py-4 rounded-[10px]">
               Checkout
             </button>
           </>

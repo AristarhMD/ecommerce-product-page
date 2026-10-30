@@ -45,16 +45,24 @@ export default function Slider() {
       {/* Mobile navigation for slider */}
       <div className="absolute w-[91.46%] md:w-[95.88%] left-1/2 top-1/2 -translate-1/2 flex justify-between xl:hidden">
         <button
-          className="size-10 flex items-center justify-center bg-white rounded-full"
+          className="group size-10 flex items-center justify-center bg-white rounded-full"
           onClick={handlePrevSlide}
         >
-          <img src={generalIcons.previousIcon} alt="Previous slide" />
+          <img
+            src={generalIcons.previousIcon}
+            alt="Previous slide"
+            className="group-hover:filter-[invert(66%)_sepia(62%)_saturate(4388%)_hue-rotate(347deg)_brightness(102%)_contrast(101%)]"
+          />
         </button>
         <button
-          className="size-10 flex items-center justify-center bg-white rounded-full"
+          className="group size-10 flex items-center justify-center bg-white rounded-full"
           onClick={handleNextSlide}
         >
-          <img src={generalIcons.nextIcon} alt="Next slide" />
+          <img
+            src={generalIcons.nextIcon}
+            alt="Next slide"
+            className="group-hover:filter-[invert(66%)_sepia(62%)_saturate(4388%)_hue-rotate(347deg)_brightness(102%)_contrast(101%)]"
+          />
         </button>
       </div>
 
