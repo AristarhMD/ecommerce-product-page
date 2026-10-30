@@ -1,17 +1,36 @@
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { DataContext } from "../DataContext";
 import { generalIcons } from "../../data/data";
 
-export default function CartModal({ isCartOpen }) {
+export default function CartModal({ isCartOpen, setIsCartOpen }) {
   const { orderedItem, setOrderedItem } = useContext(DataContext);
+  const cartRef = useRef(null);
 
   const handleDeleteCart = () => {
     setOrderedItem([]);
-    isCartOpen(false);
+    setIsCartOpen(false);
   };
 
+  useEffect(() => {
+    const handlePointerDown = (e) => {
+      if (e.target.closest("[data-cart-toggle]")) return;
+      if (cartRef.current?.contains(e.target)) return;
+      setIsCartOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [isCartOpen, setIsCartOpen]);
+
   return (
-    <aside className="absolute z-1 top-19 md:top-23.5 xl:top-16.5 right-2 xl:-right-22 w-90 h-64 py-6 bg-white rounded-[10px] shadow-cartModal">
+    <aside
+      className="absolute z-1 top-19 md:top-23.5 xl:top-16.5 right-2 xl:-right-22 w-90 h-64 py-6 bg-white rounded-[10px] shadow-cartModal"
+      ref={cartRef}
+      aria-label="Shopping cart"
+      aria-hidden={!isCartOpen}
+      aria-live="assertive"
+    >
       <p className="preset-3-b text-grey-950 mb-6 px-3">Cart</p>
       <article className="px-6 pt-6 border-t border-grey-100 flex flex-col items-center justify-center gap-6">
         {orderedItem.length > 0 ? (

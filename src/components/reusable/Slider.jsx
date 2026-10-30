@@ -1,17 +1,28 @@
 import { useState } from "react";
 import { products, generalIcons } from "../../data/data";
+import LigthBoxSlider from "./LightBoxSlider";
+const DESKTOP_QUERY = "(min-width: 1280px)";
 
 export default function Slider() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [isModalOpen, setiIsModalOpen] = useState(false);
+
+  const { images, imagesThumbnail } = products[0];
+  const lastSlideIdx = images.length - 1;
 
   const handlePrevSlide = () =>
-    setActiveSlide((prev) => (prev - 1 < 0 ? 3 : prev - 1));
+    setActiveSlide((prev) => (prev === 0 ? lastSlideIdx : prev - 1));
 
   const handleNextSlide = () =>
-    setActiveSlide((prev) => (prev + 1 > 3 ? 0 : prev + 1));
+    setActiveSlide((prev) => (prev === lastSlideIdx ? 0 : prev + 1));
 
   const handleDeskChange = (idx) => {
     setActiveSlide(idx);
+  };
+
+  const handleOpenModal = () => {
+    if (!window.matchMedia(DESKTOP_QUERY).matches) return;
+    setiIsModalOpen(true);
   };
 
   return (
@@ -19,8 +30,9 @@ export default function Slider() {
       <div
         className="flex h-full transition-all duration-300 ease-in-out"
         style={{ transform: `translateX(-${activeSlide * 100}%)` }}
+        onClick={handleOpenModal}
       >
-        {products[0].images.map((img, idx) => (
+        {images.map((img, idx) => (
           <img
             key={idx}
             src={img.src}
@@ -46,8 +58,9 @@ export default function Slider() {
         </button>
       </div>
 
+      {/* Thumbnail icons for desktop */}
       <div className="hidden xl:flex items-center justify-between">
-        {products[0].imagesThumbnail.map(({ src, alt }, idx) => (
+        {imagesThumbnail.map(({ src, alt }, idx) => (
           <button
             key={idx}
             className={`rounded-[10px] overflow-clip relative size-22 hover:bg-white/75 active:bg-white-75  ${idx === activeSlide ? "active-thumbnail bg-white/75" : ""}`}
@@ -57,6 +70,19 @@ export default function Slider() {
           </button>
         ))}
       </div>
+
+      {isModalOpen && (
+        <LigthBoxSlider
+          isVisible={isModalOpen}
+          images={images}
+          imagesThumbnail={imagesThumbnail}
+          activeSlide={activeSlide}
+          onClose={setiIsModalOpen}
+          onPrev={handlePrevSlide}
+          OnNext={handleNextSlide}
+          onThumbSelect={handleDeskChange}
+        />
+      )}
     </div>
   );
 }

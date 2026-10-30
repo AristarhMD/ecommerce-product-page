@@ -12,6 +12,7 @@ export default function RightSideNav() {
   return (
     <div className="flex items-center gap-6 md:gap-12">
       <button
+        data-cart-toggle
         onClick={handleToggleCart}
         className={`group relative ${orderedItem.length > 0 ? "cart-active" : ""}`}
       >
@@ -31,7 +32,9 @@ export default function RightSideNav() {
           className="size-6 rounded-full md:size-12.5 object-cover relative -z-1 "
         />
       </button>
-      {isCartOpen && <CartModal isCartOpen={setIsCartOpen} />}
+      {isCartOpen && (
+        <CartModal isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
+      )}
     </div>
   );
 }

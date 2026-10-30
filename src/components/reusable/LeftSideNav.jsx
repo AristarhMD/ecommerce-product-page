@@ -10,13 +10,19 @@ export default function LeftSideNav() {
 
   return (
     <div className="flex items-center gap-4 xl:gap-14">
-      <button onClick={handleToggleMenu} className="xl:hidden xl:disabled">
+      <button
+        data-mobnav-toggler
+        onClick={handleToggleMenu}
+        className="xl:hidden xl:disabled"
+      >
         <img src={generalIcons.hamburgerIcon} alt="Hamburger menu icon" />
       </button>
       <img src={generalIcons.logoIcon} alt="Logo of the company" />
 
       {/* Mobile menu */}
-      {isOpenMenu && <MobNavMenu handleToggleMenu={handleToggleMenu} />}
+      {isOpenMenu && (
+        <MobNavMenu isOpen={isOpenMenu} handleToggleMenu={handleToggleMenu} />
+      )}
       {/* Desktop menu */}
       <NavList type="desktop" />
     </div>
