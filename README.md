@@ -56,8 +56,8 @@ Design files from the challenge (the `design/` folder) that this page is built f
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [on GitHub](https://github.com/AristarhMD/ecommerce-product-page.git)
+- Live Site URL: [on Netlify](https://e-commerce-product-page-vn.netlify.app/)
 
 ### Running locally
 
